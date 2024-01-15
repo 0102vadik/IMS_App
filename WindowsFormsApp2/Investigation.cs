@@ -31,10 +31,10 @@ namespace WindowsFormsApp2
             double[,] matModel = new double[4, 6];
             double[] SuArray = new double[4];
 
-            Smo[] array = { new Smo { Lymda = lymdaStart, MuPhaseOne = muStart, MuPhaseTwo=muStart },
-                new Smo { Lymda = lymdaStart, MuPhaseOne = muEnd, MuPhaseTwo = muEnd },
-                new Smo { Lymda = lymdaEnd, MuPhaseOne = muStart, MuPhaseTwo = muStart },
-                new Smo { Lymda = lymdaEnd, MuPhaseOne = muEnd, MuPhaseTwo = muEnd }
+            Smo[] array = { new Smo { Lymda = lymdaStart, MuPhaseOne = muStart, MuPhaseThree=muStart },
+                new Smo { Lymda = lymdaStart, MuPhaseOne = muEnd, MuPhaseThree = muEnd },
+                new Smo { Lymda = lymdaEnd, MuPhaseOne = muStart, MuPhaseThree = muStart },
+                new Smo { Lymda = lymdaEnd, MuPhaseOne = muEnd, MuPhaseThree = muEnd }
             };
             InitializeMatModel(ref matModel);
             for (int i = 0; i < array.Length; i++)

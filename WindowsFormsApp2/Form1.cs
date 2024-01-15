@@ -163,7 +163,7 @@ namespace WindowsFormsApp2
             
             for (double i = muStart; i < muEnd; i += muDelta)
             {
-                Smo qms = new Smo() { MuPhaseOne = i, MuPhaseTwo = i };
+                Smo qms = new Smo() { MuPhaseOne = i, MuPhaseTwoOne = i };
                 qms.StartSimulation(simulationTime);
                 double p = (double)qms.GetRejectedRequests() / (double)(qms.GetServicedRequests() + qms.GetRejectedRequests()) * 100;
                 rejectedInPercent.Add(p);
@@ -235,6 +235,11 @@ namespace WindowsFormsApp2
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
