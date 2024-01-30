@@ -67,9 +67,16 @@ namespace WindowsFormsApp2
             Smo qms;
             try
             {
-                qms = new Smo(double.Parse(textBox1.Text), double.Parse(textBox2.Text),
-                    double.Parse(textBox3.Text),
-                    double.Parse(textBox4.Text), double.Parse(textBox5.Text));
+                qms = new Smo(
+                    double.Parse(textBox1.Text), 
+                    double.Parse(textBox4.Text),
+                    double.Parse(textBox5.Text),
+                    double.Parse(textBox6.Text), 
+                    double.Parse(textBox8.Text), 
+                    double.Parse(textBox2.Text), 
+                    double.Parse(textBox3.Text), 
+                    double.Parse(textBox7.Text),
+                    1);
             }
             catch (Exception ex)
             {

@@ -38,9 +38,17 @@ namespace WindowsFormsApp2
         public double MuPhaseTwoTwo { get; set; } = 1;
         public double MuPhaseThree { get; set; } = 1;
 
-        public Smo(double lymbda, double m1, double m2, double tn1, double tn2)
+        public Smo(double lymbda, double stayingTime, double stayingTime2, double stayingTime31, double stayingTime32, double mu1, double mu21, double mu22, double mu3)
         {
             this.Lymda = lymbda;
+            this._accumulatorStayingTime = stayingTime;
+            this._accumulatorStayingTime2 = stayingTime2;
+            this._accumulatorStayingTime31 = stayingTime31;
+            this._accumulatorStayingTime32 = stayingTime32;
+            this.MuPhaseOne = mu1;
+            this.MuPhaseTwoOne = mu21;
+            this.MuPhaseTwoTwo = mu22;
+            this.MuPhaseThree = mu3;
             StartInic();
         }
 
