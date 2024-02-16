@@ -82,7 +82,7 @@ namespace WindowsFormsApp2
             {
                 qms = new Smo();
             }
-            qms.StartSimulation(5000);
+            qms.StartSimulation(50000);
             int n0 = qms.GetRejectedRequests();
             int n = qms.GetServicedRequests();
             double maxTime = qms.GetMaxTimeInStorageDevice();
