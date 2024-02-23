@@ -66,6 +66,10 @@ namespace WindowsFormsApp2
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label46 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -106,10 +110,8 @@ namespace WindowsFormsApp2
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graphic)).BeginInit();
@@ -127,7 +129,7 @@ namespace WindowsFormsApp2
             this.chart1.ChartAreas.Add(chartArea7);
             legend7.Name = "Legend1";
             this.chart1.Legends.Add(legend7);
-            this.chart1.Location = new System.Drawing.Point(458, 371);
+            this.chart1.Location = new System.Drawing.Point(458, 400);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
             series7.ChartArea = "ChartArea1";
@@ -144,7 +146,7 @@ namespace WindowsFormsApp2
             this.chart2.ChartAreas.Add(chartArea8);
             legend8.Name = "Legend1";
             this.chart2.Legends.Add(legend8);
-            this.chart2.Location = new System.Drawing.Point(886, 371);
+            this.chart2.Location = new System.Drawing.Point(886, 400);
             this.chart2.Name = "chart2";
             series8.ChartArea = "ChartArea1";
             series8.Legend = "Legend1";
@@ -160,7 +162,7 @@ namespace WindowsFormsApp2
             this.graphic.ChartAreas.Add(chartArea9);
             legend9.Name = "Legend1";
             this.graphic.Legends.Add(legend9);
-            this.graphic.Location = new System.Drawing.Point(19, 371);
+            this.graphic.Location = new System.Drawing.Point(19, 400);
             this.graphic.Name = "graphic";
             this.graphic.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
             series9.ChartArea = "ChartArea1";
@@ -204,14 +206,14 @@ namespace WindowsFormsApp2
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(302, 119);
+            this.textBox4.Location = new System.Drawing.Point(302, 144);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 7;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(302, 144);
+            this.textBox5.Location = new System.Drawing.Point(302, 169);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 8;
@@ -309,7 +311,7 @@ namespace WindowsFormsApp2
             // lblMaxTime
             // 
             this.lblMaxTime.AutoSize = true;
-            this.lblMaxTime.Location = new System.Drawing.Point(292, 99);
+            this.lblMaxTime.Location = new System.Drawing.Point(292, 101);
             this.lblMaxTime.Name = "lblMaxTime";
             this.lblMaxTime.Size = new System.Drawing.Size(60, 13);
             this.lblMaxTime.TabIndex = 19;
@@ -318,7 +320,7 @@ namespace WindowsFormsApp2
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(292, 118);
+            this.label26.Location = new System.Drawing.Point(292, 119);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(41, 13);
             this.label26.TabIndex = 20;
@@ -327,7 +329,7 @@ namespace WindowsFormsApp2
             // lblAbsoluteOmission
             // 
             this.lblAbsoluteOmission.AutoSize = true;
-            this.lblAbsoluteOmission.Location = new System.Drawing.Point(291, 131);
+            this.lblAbsoluteOmission.Location = new System.Drawing.Point(292, 136);
             this.lblAbsoluteOmission.Name = "lblAbsoluteOmission";
             this.lblAbsoluteOmission.Size = new System.Drawing.Size(100, 13);
             this.lblAbsoluteOmission.TabIndex = 21;
@@ -363,7 +365,7 @@ namespace WindowsFormsApp2
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 122);
+            this.label4.Location = new System.Drawing.Point(21, 147);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(258, 13);
             this.label4.TabIndex = 25;
@@ -372,7 +374,7 @@ namespace WindowsFormsApp2
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 146);
+            this.label5.Location = new System.Drawing.Point(21, 171);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(258, 13);
             this.label5.TabIndex = 26;
@@ -380,6 +382,8 @@ namespace WindowsFormsApp2
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label49);
+            this.groupBox1.Controls.Add(this.textBox9);
             this.groupBox1.Controls.Add(this.label48);
             this.groupBox1.Controls.Add(this.textBox8);
             this.groupBox1.Controls.Add(this.label47);
@@ -398,15 +402,47 @@ namespace WindowsFormsApp2
             this.groupBox1.Controls.Add(this.textBox5);
             this.groupBox1.Location = new System.Drawing.Point(19, 140);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(412, 225);
+            this.groupBox1.Size = new System.Drawing.Size(412, 254);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Входные характеристики";
             // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(21, 221);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(276, 13);
+            this.label48.TabIndex = 32;
+            this.label48.Text = "Время пребывания заявки в накопителе 3.2 фазы 3:";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(302, 219);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(100, 20);
+            this.textBox8.TabIndex = 31;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(21, 97);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(267, 13);
+            this.label47.TabIndex = 30;
+            this.label47.Text = "Интенсивность потока обслуживания K2.2 фазы 2:";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(302, 94);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 20);
+            this.textBox7.TabIndex = 29;
+            // 
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(21, 171);
+            this.label46.Location = new System.Drawing.Point(21, 196);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(276, 13);
             this.label46.TabIndex = 28;
@@ -414,7 +450,7 @@ namespace WindowsFormsApp2
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(302, 169);
+            this.textBox6.Location = new System.Drawing.Point(302, 194);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 27;
@@ -437,7 +473,7 @@ namespace WindowsFormsApp2
             this.groupBox2.Controls.Add(this.lblMaxTime);
             this.groupBox2.Location = new System.Drawing.Point(458, 137);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(404, 155);
+            this.groupBox2.Size = new System.Drawing.Size(404, 163);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Выходные характеристики";
@@ -446,7 +482,7 @@ namespace WindowsFormsApp2
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 131);
+            this.label12.Location = new System.Drawing.Point(6, 136);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(179, 13);
             this.label12.TabIndex = 28;
@@ -455,7 +491,7 @@ namespace WindowsFormsApp2
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 118);
+            this.label11.Location = new System.Drawing.Point(6, 119);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(250, 13);
             this.label11.TabIndex = 27;
@@ -464,7 +500,7 @@ namespace WindowsFormsApp2
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 99);
+            this.label10.Location = new System.Drawing.Point(6, 101);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(285, 13);
             this.label10.TabIndex = 26;
@@ -761,7 +797,7 @@ namespace WindowsFormsApp2
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(101, 674);
+            this.label34.Location = new System.Drawing.Point(101, 703);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(237, 13);
             this.label34.TabIndex = 33;
@@ -770,7 +806,7 @@ namespace WindowsFormsApp2
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(540, 674);
+            this.label35.Location = new System.Drawing.Point(540, 703);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(237, 13);
             this.label35.TabIndex = 34;
@@ -779,7 +815,7 @@ namespace WindowsFormsApp2
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(540, 687);
+            this.label37.Location = new System.Drawing.Point(540, 716);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(237, 13);
             this.label37.TabIndex = 35;
@@ -788,7 +824,7 @@ namespace WindowsFormsApp2
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(128, 687);
+            this.label38.Location = new System.Drawing.Point(128, 716);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(170, 13);
             this.label38.TabIndex = 36;
@@ -797,43 +833,28 @@ namespace WindowsFormsApp2
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(965, 674);
+            this.label39.Location = new System.Drawing.Point(965, 703);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(327, 13);
             this.label39.TabIndex = 37;
             this.label39.Text = "Совмещённый график имитационной и регрессионной модели";
             // 
-            // label47
+            // label49
             // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(21, 97);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(267, 13);
-            this.label47.TabIndex = 30;
-            this.label47.Text = "Интенсивность потока обслуживания K2.2 фазы 2:";
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(21, 122);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(242, 13);
+            this.label49.TabIndex = 34;
+            this.label49.Text = "Интенсивность потока обслуживания фазы 3:";
             // 
-            // textBox7
+            // textBox9
             // 
-            this.textBox7.Location = new System.Drawing.Point(302, 94);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 29;
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(21, 196);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(276, 13);
-            this.label48.TabIndex = 32;
-            this.label48.Text = "Время пребывания заявки в накопителе 3.2 фазы 3:";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(302, 194);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 31;
+            this.textBox9.Location = new System.Drawing.Point(302, 119);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 20);
+            this.textBox9.TabIndex = 33;
+            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // Form1
             // 
@@ -952,6 +973,8 @@ namespace WindowsFormsApp2
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.TextBox textBox9;
     }
 }
 
