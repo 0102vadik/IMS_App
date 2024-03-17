@@ -29,15 +29,15 @@ namespace WindowsFormsApp2
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.graphic = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -127,62 +127,76 @@ namespace WindowsFormsApp2
             // 
             // chart1
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chart1.Legends.Add(legend7);
+            this.chart1.BorderlineColor = System.Drawing.Color.LightGray;
+            this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.chart1.BorderSkin.BackColor = System.Drawing.Color.Black;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(458, 426);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.chart1.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(404, 300);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
             // chart2
             // 
-            chartArea8.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chart2.Legends.Add(legend8);
+            this.chart2.BorderlineColor = System.Drawing.Color.LightGray;
+            this.chart2.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.chart2.BorderSkin.BackColor = System.Drawing.Color.Black;
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
             this.chart2.Location = new System.Drawing.Point(886, 426);
             this.chart2.Name = "chart2";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.chart2.Series.Add(series8);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(455, 300);
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
             // 
             // graphic
             // 
-            chartArea9.Name = "ChartArea1";
-            this.graphic.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            this.graphic.Legends.Add(legend9);
+            this.graphic.BorderlineColor = System.Drawing.Color.LightGray;
+            this.graphic.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.graphic.BorderSkin.BackColor = System.Drawing.Color.Black;
+            chartArea3.Name = "ChartArea1";
+            this.graphic.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.graphic.Legends.Add(legend3);
             this.graphic.Location = new System.Drawing.Point(19, 426);
             this.graphic.Name = "graphic";
             this.graphic.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series9.ChartArea = "ChartArea1";
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            this.graphic.Series.Add(series9);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.graphic.Series.Add(series3);
             this.graphic.Size = new System.Drawing.Size(412, 300);
             this.graphic.TabIndex = 2;
             this.graphic.Text = "graphic";
             // 
             // btnStartSimulation
             // 
-            this.btnStartSimulation.Location = new System.Drawing.Point(1210, 11);
+            this.btnStartSimulation.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnStartSimulation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStartSimulation.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.btnStartSimulation.Font = new System.Drawing.Font("Microsoft Himalaya", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnStartSimulation.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnStartSimulation.Location = new System.Drawing.Point(1174, 11);
             this.btnStartSimulation.Name = "btnStartSimulation";
-            this.btnStartSimulation.Size = new System.Drawing.Size(131, 23);
+            this.btnStartSimulation.Size = new System.Drawing.Size(167, 38);
             this.btnStartSimulation.TabIndex = 3;
             this.btnStartSimulation.Text = "Начать иммитацию";
-            this.btnStartSimulation.UseVisualStyleBackColor = true;
+            this.btnStartSimulation.UseVisualStyleBackColor = false;
             this.btnStartSimulation.Click += new System.EventHandler(this.btnStartSimulation_Click);
             // 
             // textBox1
@@ -880,6 +894,7 @@ namespace WindowsFormsApp2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1355, 793);
             this.Controls.Add(this.label39);
             this.Controls.Add(this.label38);
