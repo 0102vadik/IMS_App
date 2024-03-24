@@ -31,10 +31,43 @@ namespace WindowsFormsApp2
             double[,] matModel = new double[4, 6];
             double[] SuArray = new double[4];
 
-            Smo[] array = { new Smo { Lymda = lymdaStart, MuPhaseOne = muStart, MuPhaseThree=muStart },
-                new Smo { Lymda = lymdaStart, MuPhaseOne = muEnd, MuPhaseThree = muEnd },
-                new Smo { Lymda = lymdaEnd, MuPhaseOne = muStart, MuPhaseThree = muStart },
-                new Smo { Lymda = lymdaEnd, MuPhaseOne = muEnd, MuPhaseThree = muEnd }
+            Smo[] array = { 
+               // new Smo { Lymda = lymdaEnd, MuPhaseOne = muEnd,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muEnd, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muEnd,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muStart, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muEnd,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muStart, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muEnd,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muEnd, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muEnd,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muEnd, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muEnd,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muStart, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muEnd,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muStart, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muStart,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muEnd, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muStart,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muEnd, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muStart,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muStart, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muStart,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muStart, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muStart,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muEnd, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muStart,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muEnd, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muStart,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muStart, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muStart,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muStart, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muEnd,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muEnd, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muEnd,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muEnd, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muEnd,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muStart, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muEnd,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muStart, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muEnd,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muEnd, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muEnd,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muEnd, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muEnd,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muStart, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muEnd,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muStart, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muStart,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muEnd, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muStart,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muEnd, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muStart,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muStart, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muStart,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muStart, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muStart,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muEnd, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muStart,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muEnd, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muStart,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muStart, MuPhaseThree=muEnd },
+                //new Smo { Lymda = lymdaStart, MuPhaseOne = muStart,MuPhaseTwoOne = muStart,MuPhaseTwoTwo = muStart, MuPhaseThree=muStart },
+                //new Smo { Lymda = lymdaEnd, MuPhaseOne = muEnd,MuPhaseTwoOne = muEnd,MuPhaseTwoTwo = muEnd, MuPhaseThree=muEnd },
+                new Smo { Lymda = lymdaStart, MuPhaseTwoOne = muStart, MuPhaseTwoTwo = muStart },
+                new Smo { Lymda = lymdaStart, MuPhaseTwoOne = muEnd, MuPhaseTwoTwo = muEnd },
+                new Smo { Lymda = lymdaEnd, MuPhaseTwoOne = muStart, MuPhaseTwoTwo = muStart },
+                new Smo { Lymda = lymdaEnd, MuPhaseTwoOne = muEnd, MuPhaseTwoTwo = muEnd }
             };
             InitializeMatModel(ref matModel);
             for (int i = 0; i < array.Length; i++)

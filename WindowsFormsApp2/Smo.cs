@@ -20,10 +20,10 @@ namespace WindowsFormsApp2
         private RequestChannel[] _channelsPhase1;
         private RequestChannel[] _channelsPhase2;
         private RequestChannel[] _channelsPhase3;
-        private const int _accumulatorCapasity = 0;
-        private const int _accumulatorCapasity2 = 0;
-        private const int _accumulatorCapasity31 = 10;
-        private const int _accumulatorCapasity32 = 26;
+        private int _accumulatorCapasity = 0;
+        private int _accumulatorCapasity2 = 0;
+        private int _accumulatorCapasity31 = 10;
+        private int _accumulatorCapasity32 = 26;
         private double _accumulatorStayingTime = 0;
         private double _accumulatorStayingTime2 = 0;
         private double _accumulatorStayingTime31 = 2.6;
@@ -38,13 +38,15 @@ namespace WindowsFormsApp2
         public double MuPhaseTwoTwo { get; set; } = 1;
         public double MuPhaseThree { get; set; } = 1;
 
-        public Smo(double lymbda, double stayingTime, double stayingTime2, double stayingTime31, double stayingTime32, double mu1, double mu21, double mu22, double mu3)
+        public Smo(double lymbda, double stayingTime, double stayingTime2, double stayingTime31, double stayingTime32, double mu1, double mu21, double mu22, double mu3,int _accumulatorCapasity31,int _accumulatorCapasity32)
         {
             this.Lymda = lymbda;
             this._accumulatorStayingTime = stayingTime;
             this._accumulatorStayingTime2 = stayingTime2;
             this._accumulatorStayingTime31 = stayingTime31;
             this._accumulatorStayingTime32 = stayingTime32;
+            this._accumulatorCapasity31 = _accumulatorCapasity31;
+            this._accumulatorCapasity32 = _accumulatorCapasity32;
             this.MuPhaseOne = mu1;
             this.MuPhaseTwoOne = mu21;
             this.MuPhaseTwoTwo = mu22;
@@ -123,7 +125,7 @@ namespace WindowsFormsApp2
                 else
                 {
                     _rejectedRequestsCount++;
-                    result.AppendLine("Заявкаотклонена");
+                    result.AppendLine("Заявка отклонена");
                 }
             }
             for (int i = 0; i < _channelsPhase2.Length; i++)
@@ -181,7 +183,7 @@ namespace WindowsFormsApp2
                         _servicedRequestCount++;
                         result.AppendLine("Заявкаобработана в фазе 3 каналом № " + (i + 1));
                         _channelsPhase3[i].State = STATE_EMPTY;
-                        CheckStorageDeviceAndPhases(systemTime);
+                         //CheckStorageDeviceAndPhases(systemTime);
                     }
                 }
             }
@@ -198,13 +200,12 @@ namespace WindowsFormsApp2
                             if (_channelsPhase3[j].State == STATE_EMPTY)
                             {
                                 double time = 0;
-                                if (i == 0) time = CalculatePhasesChannelsServiceTime(MuPhaseTwoOne, 2);
-                                else time = CalculatePhasesChannelsServiceTime(MuPhaseTwoTwo, 3);
+                                time = CalculatePhasesChannelsServiceTime(MuPhaseThree, 4);
                                 _channelsPhase3[j].ServiceTime = systemTime + time;
                                 _channelsPhase3[j].State = STATE_WORK;
                                 _channelsPhase2[i].State = STATE_EMPTY;
                                 result.AppendLine("Заявка обрабатывается в фазе 3 каналом №" + (j + 1) + " .Время заявки " + time);
-                                CheckStorageDeviceAndPhases(systemTime);
+                                 CheckStorageDeviceAndPhases(systemTime);
                                 break;
                             }
                             else
@@ -241,12 +242,12 @@ namespace WindowsFormsApp2
                         {
                             if (_channelsPhase3[j].State == STATE_EMPTY)
                             {
-                                double time = CalculatePhasesChannelsServiceTime(MuPhaseOne, 1);
+                                double time = CalculatePhasesChannelsServiceTime(MuPhaseThree, 4);
                                 _channelsPhase3[j].ServiceTime = systemTime + time;
                                 _channelsPhase3[j].State = STATE_WORK;
                                 _channelsPhase2[i].State = STATE_EMPTY;
                                 result.AppendLine("Заявка обрабатывается в фазе 3 каналом №" + (j + 1) + " .Время заявки " + time);
-                                CheckStorageDeviceAndPhases(systemTime);
+                                 //CheckStorageDeviceAndPhases(systemTime);
                                 break;
                             }
                             else
@@ -283,12 +284,14 @@ namespace WindowsFormsApp2
                         {
                             if (_channelsPhase2[j].State == STATE_EMPTY)
                             {
-                                double time = CalculatePhasesChannelsServiceTime(MuPhaseOne, 2);
+                                double time = 0;
+                                if (j==0) time = CalculatePhasesChannelsServiceTime(MuPhaseTwoOne, 2);
+                                else time = CalculatePhasesChannelsServiceTime(MuPhaseTwoTwo, 3);
                                 _channelsPhase2[j].ServiceTime = systemTime + time;
                                 _channelsPhase2[j].State = STATE_WORK;
                                 _channelsPhase1[i].State = STATE_EMPTY;
                                 result.AppendLine("Заявка обрабатывается в фазе 2 каналом №" + (j + 1) + " .Время заявки " + time);
-                                CheckStorageDeviceAndPhases(systemTime);
+                                // CheckStorageDeviceAndPhases(systemTime);
                                 break;
                             }
                             else
@@ -307,7 +310,7 @@ namespace WindowsFormsApp2
                             else
                             {
                                 _rejectedRequestsCount++;
-                                result.AppendLine("Заявкаотклонена");
+                                result.AppendLine("Заявка отклонена");
                             }
                         }
                     }
@@ -338,7 +341,7 @@ namespace WindowsFormsApp2
                 case 1: return -Math.Log(StaticRandom.NextDouble()) / Lymda; //показательный (экспоненциальный) для фазы 1
                 case 2: return StaticRandom.NextDouble() / mu; // равномерно фазы 2.1
                 case 3: return -Math.Log(StaticRandom.NextDouble()) / Lymda; //показательный (экспоненциальный) для фазы 2.2
-                case 4: return 1 / (mu * Math.Sqrt(2 * Math.PI)) * Math.Exp(-Math.Pow(StaticRandom.NextDouble() - 0.5, 2) / (2 * Math.Pow(mu, 2)));  //нормальный для фазы 3
+                case 4: return (1 / (mu * Math.Sqrt(2 * Math.PI)) * Math.Exp(-Math.Pow(StaticRandom.NextDouble() - 0.5, 2) / (2 * Math.Pow(mu, 2))));  //нормальный для фазы 3
             }
             return 0;
         }
