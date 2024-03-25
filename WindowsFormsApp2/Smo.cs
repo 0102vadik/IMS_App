@@ -9,8 +9,7 @@ namespace WindowsFormsApp2
     public class Smo
     {
         private const int STATE_EMPTY = 0;
-        private const int STATE_WORK = 2; 
-        private const int STATE_BLOCKED = 1; 
+        private const int STATE_WORK = 2;
         private const int COUNT_CHANNELS_1 = 1;
         private const int COUNT_CHANNELS_2 = 2;
         private const int COUNT_CHANNELS_3 = 1;
@@ -21,31 +20,37 @@ namespace WindowsFormsApp2
         private RequestChannel[] _channelsPhase1;
         private RequestChannel[] _channelsPhase2;
         private RequestChannel[] _channelsPhase3;
-        private const int _accumulatorCapasity = 0;
-        private const int _accumulatorCapasity2 = 0;
-        private const int _accumulatorCapasity31 = 10;
-        private const int _accumulatorCapasity32 = 10;
-        private double _accumulatorStayingTime = 5;
-        private double _accumulatorStayingTime2 = 5;
-        private double _accumulatorStayingTime31 = 5;
-        private double _accumulatorStayingTime32 = 5;
+        private int _accumulatorCapasity = 0;
+        private int _accumulatorCapasity2 = 0;
+        private int _accumulatorCapasity31 = 10;
+        private int _accumulatorCapasity32 = 26;
+        private double _accumulatorStayingTime = 0;
+        private double _accumulatorStayingTime2 = 0;
+        private double _accumulatorStayingTime31 = 2.6;
+        private double _accumulatorStayingTime32 = 1;
         public StringBuilder result = new StringBuilder();
         private int _rejectedRequestsCount = 0;
         private int _servicedRequestCount = 0;
         private double _omission = 0;
         public double Lymda { get; set; } = 2; 
-        public double MuPhaseOne { get; set; } = 0.6;
-        public double MuPhaseTwo { get; set; } = 0.3;
+        public double MuPhaseOne { get; set; } = 1;
+        public double MuPhaseTwoOne { get; set; } = 2.5;
+        public double MuPhaseTwoTwo { get; set; } = 1;
+        public double MuPhaseThree { get; set; } = 1;
 
-        public Smo(double lymbda, double m1, double m2, double tn1, double tn2)
+        public Smo(double lymbda, double stayingTime, double stayingTime2, double stayingTime31, double stayingTime32, double mu1, double mu21, double mu22, double mu3,int _accumulatorCapasity31,int _accumulatorCapasity32)
         {
-            Lymda = lymbda;
-            MuPhaseOne = m1;
-            MuPhaseTwo = m2;
-            _accumulatorStayingTime = tn1;
-            _accumulatorStayingTime2 = tn2;
-            _accumulatorStayingTime31 = double.Parse("5");
-            _accumulatorStayingTime32 = double.Parse("5");
+            this.Lymda = lymbda;
+            this._accumulatorStayingTime = stayingTime;
+            this._accumulatorStayingTime2 = stayingTime2;
+            this._accumulatorStayingTime31 = stayingTime31;
+            this._accumulatorStayingTime32 = stayingTime32;
+            this._accumulatorCapasity31 = _accumulatorCapasity31;
+            this._accumulatorCapasity32 = _accumulatorCapasity32;
+            this.MuPhaseOne = mu1;
+            this.MuPhaseTwoOne = mu21;
+            this.MuPhaseTwoTwo = mu22;
+            this.MuPhaseThree = mu3;
             StartInic();
         }
 
@@ -102,7 +107,7 @@ namespace WindowsFormsApp2
             {
                 if (_channelsPhase1[i].State == STATE_EMPTY)
                 {
-                    double time = CalculatePhasesChannelsServiceTime(MuPhaseOne, false);
+                    double time = CalculatePhasesChannelsServiceTime(MuPhaseOne, 1);
                     _channelsPhase1[i].ServiceTime = systemTime + time;
                     _channelsPhase1[i].State = STATE_WORK;
                     isPhaseOneUsable = true;
@@ -120,7 +125,7 @@ namespace WindowsFormsApp2
                 else
                 {
                     _rejectedRequestsCount++;
-                    result.AppendLine("Заявкаотклонена");
+                    result.AppendLine("Заявка отклонена");
                 }
             }
             for (int i = 0; i < _channelsPhase2.Length; i++)
@@ -129,7 +134,10 @@ namespace WindowsFormsApp2
                 {
                     if (_channelsPhase2[i].State == STATE_EMPTY)
                     {
-                        _channelsPhase2[i].ServiceTime = systemTime + CalculatePhasesChannelsServiceTime(MuPhaseTwo, true);
+                        double calculatePhasesChannelsServiceTime = 0;
+                        if (i == 0) calculatePhasesChannelsServiceTime = CalculatePhasesChannelsServiceTime(MuPhaseTwoOne, 2);
+                        else calculatePhasesChannelsServiceTime = CalculatePhasesChannelsServiceTime(MuPhaseTwoTwo, 3);
+                        _channelsPhase2[i].ServiceTime = systemTime + calculatePhasesChannelsServiceTime;
                         _channelsPhase2[i].State = STATE_WORK;
                         _accumulator2.DeleteRequest(systemTime);
                         break;
@@ -142,7 +150,7 @@ namespace WindowsFormsApp2
                 {
                     if (_channelsPhase3[i].State == STATE_EMPTY)
                     {
-                        _channelsPhase3[i].ServiceTime = systemTime + CalculatePhasesChannelsServiceTime(MuPhaseTwo, true);
+                        _channelsPhase3[i].ServiceTime = systemTime + CalculatePhasesChannelsServiceTime(MuPhaseThree, 4);
                         _channelsPhase3[i].State = STATE_WORK;
                         _accumulator31.DeleteRequest(systemTime);
                         break;
@@ -155,7 +163,7 @@ namespace WindowsFormsApp2
                 {
                     if (_channelsPhase3[i].State == STATE_EMPTY)
                     {
-                        _channelsPhase3[i].ServiceTime = systemTime + CalculatePhasesChannelsServiceTime(MuPhaseTwo, true);
+                        _channelsPhase3[i].ServiceTime = systemTime + CalculatePhasesChannelsServiceTime(MuPhaseThree, 4);
                         _channelsPhase3[i].State = STATE_WORK;
                         _accumulator32.DeleteRequest(systemTime);
                         break;
@@ -173,9 +181,9 @@ namespace WindowsFormsApp2
                     if (_channelsPhase3[i].ServiceTime <= systemTime)
                     {
                         _servicedRequestCount++;
-                        result.AppendLine("Заявкаобработа на в фазе 3 каналом № " + (i + 1));
+                        result.AppendLine("Заявкаобработана в фазе 3 каналом № " + (i + 1));
                         _channelsPhase3[i].State = STATE_EMPTY;
-                        CheckStorageDeviceAndPhases(systemTime);
+                         //CheckStorageDeviceAndPhases(systemTime);
                     }
                 }
             }
@@ -191,12 +199,13 @@ namespace WindowsFormsApp2
                         {
                             if (_channelsPhase3[j].State == STATE_EMPTY)
                             {
-                                double time = CalculatePhasesChannelsServiceTime(MuPhaseTwo, true);
+                                double time = 0;
+                                time = CalculatePhasesChannelsServiceTime(MuPhaseThree, 4);
                                 _channelsPhase3[j].ServiceTime = systemTime + time;
                                 _channelsPhase3[j].State = STATE_WORK;
                                 _channelsPhase2[i].State = STATE_EMPTY;
                                 result.AppendLine("Заявка обрабатывается в фазе 3 каналом №" + (j + 1) + " .Время заявки " + time);
-                                CheckStorageDeviceAndPhases(systemTime);
+                                 CheckStorageDeviceAndPhases(systemTime);
                                 break;
                             }
                             else
@@ -210,7 +219,7 @@ namespace WindowsFormsApp2
                             if (_accumulator31.IsStorDeviceAvailable())
                             {
                                 _accumulator31.AddRequest(systemTime);
-                                result.AppendLine("Заявка добавлена в накопитель (Фаза 3). Емкостьнакопителя " + _accumulator31.Count());
+                                result.AppendLine("Заявка добавлена в накопитель (Фаза 3.1). Емкость накопителя " + _accumulator31.Count());
                             }
                             else
                             {
@@ -233,12 +242,12 @@ namespace WindowsFormsApp2
                         {
                             if (_channelsPhase3[j].State == STATE_EMPTY)
                             {
-                                double time = CalculatePhasesChannelsServiceTime(MuPhaseTwo, true);
+                                double time = CalculatePhasesChannelsServiceTime(MuPhaseThree, 4);
                                 _channelsPhase3[j].ServiceTime = systemTime + time;
                                 _channelsPhase3[j].State = STATE_WORK;
                                 _channelsPhase2[i].State = STATE_EMPTY;
                                 result.AppendLine("Заявка обрабатывается в фазе 3 каналом №" + (j + 1) + " .Время заявки " + time);
-                                CheckStorageDeviceAndPhases(systemTime);
+                                 //CheckStorageDeviceAndPhases(systemTime);
                                 break;
                             }
                             else
@@ -252,7 +261,7 @@ namespace WindowsFormsApp2
                             if (_accumulator32.IsStorDeviceAvailable())
                             {
                                 _accumulator32.AddRequest(systemTime);
-                                result.AppendLine("Заявка добавлена в накопитель (Фаза 3). Емкостьнакопителя " + _accumulator32.Count());
+                                result.AppendLine("Заявка добавлена в накопитель (Фаза 3.2). Емкостьнакопителя " + _accumulator32.Count());
                             }
                             else
                             {
@@ -270,18 +279,19 @@ namespace WindowsFormsApp2
                 {
                     if (_channelsPhase1[i].ServiceTime <= systemTime)
                     {
-                        bool isPhaseTwoUsable = true;   //проверка состояния каналов 2-й фазы
                         int notEmptyChanelsCount = 0;
                         for (int j = 0; j < _channelsPhase2.Length; j++)
                         {
                             if (_channelsPhase2[j].State == STATE_EMPTY)
                             {
-                                double time = CalculatePhasesChannelsServiceTime(MuPhaseTwo, true);
+                                double time = 0;
+                                if (j==0) time = CalculatePhasesChannelsServiceTime(MuPhaseTwoOne, 2);
+                                else time = CalculatePhasesChannelsServiceTime(MuPhaseTwoTwo, 3);
                                 _channelsPhase2[j].ServiceTime = systemTime + time;
                                 _channelsPhase2[j].State = STATE_WORK;
                                 _channelsPhase1[i].State = STATE_EMPTY;
                                 result.AppendLine("Заявка обрабатывается в фазе 2 каналом №" + (j + 1) + " .Время заявки " + time);
-                                CheckStorageDeviceAndPhases(systemTime);
+                                // CheckStorageDeviceAndPhases(systemTime);
                                 break;
                             }
                             else
@@ -300,12 +310,8 @@ namespace WindowsFormsApp2
                             else
                             {
                                 _rejectedRequestsCount++;
-                                result.AppendLine("Заявкаотклонена");
+                                result.AppendLine("Заявка отклонена");
                             }
-                        }
-                        if (!isPhaseTwoUsable)
-                        {
-                            _channelsPhase1[i].State = STATE_BLOCKED;
                         }
                     }
                 }
@@ -316,7 +322,7 @@ namespace WindowsFormsApp2
                 {
                     if (_channelsPhase1[i].State == STATE_EMPTY)
                     {
-                        _channelsPhase1[i].ServiceTime = systemTime + CalculatePhasesChannelsServiceTime(MuPhaseOne, true);
+                        _channelsPhase1[i].ServiceTime = systemTime + CalculatePhasesChannelsServiceTime(MuPhaseOne, 1);
                         _channelsPhase1[i].State = STATE_WORK;
                         _accumulator.DeleteRequest(systemTime);
                         break;
@@ -326,18 +332,18 @@ namespace WindowsFormsApp2
         }
         private double CalculateIputStreamRequestTime()
         {
-            return -Math.Log(StaticRandom.NextDouble()) / Lymda; //показательный для вх
+            return -Math.Log(StaticRandom.NextDouble()) / Lymda; //показательный для входа
         }
-        private double CalculatePhasesChannelsServiceTime(double mu, bool isNormal)
+        private double CalculatePhasesChannelsServiceTime(double mu, int isVariant)
         {
-            if (!isNormal)
-            {               
-                return StaticRandom.NextDouble() / mu; // равномерно фазы 2
-            }
-            else
+            switch (isVariant)
             {
-                return 1 / (mu * Math.Sqrt(2 * Math.PI)) * Math.Exp(-Math.Pow(StaticRandom.NextDouble() - 0.5, 2) / (2 * Math.Pow(mu, 2)));  //нормальный для фазы 1
+                case 1: return -Math.Log(StaticRandom.NextDouble()) / Lymda; //показательный (экспоненциальный) для фазы 1
+                case 2: return StaticRandom.NextDouble() / mu; // равномерно фазы 2.1
+                case 3: return -Math.Log(StaticRandom.NextDouble()) / Lymda; //показательный (экспоненциальный) для фазы 2.2
+                case 4: return (1 / (mu * Math.Sqrt(2 * Math.PI)) * Math.Exp(-Math.Pow(StaticRandom.NextDouble() - 0.5, 2) / (2 * Math.Pow(mu, 2))));  //нормальный для фазы 3
             }
+            return 0;
         }
         public double GetMaxTimeInStorageDevice()
         {

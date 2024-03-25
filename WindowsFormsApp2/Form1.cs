@@ -67,15 +67,24 @@ namespace WindowsFormsApp2
             Smo qms;
             try
             {
-                qms = new Smo(double.Parse(textBox1.Text), double.Parse(textBox2.Text),
-                    double.Parse(textBox3.Text),
-                    double.Parse(textBox4.Text), double.Parse(textBox5.Text));
+                qms = new Smo(
+                    double.Parse(textBox1.Text), 
+                    double.Parse("0"),
+                    double.Parse("0"),
+                    double.Parse(textBox6.Text), 
+                    double.Parse(textBox8.Text), 
+                    double.Parse(textBox2.Text), 
+                    double.Parse(textBox3.Text), 
+                    double.Parse(textBox7.Text),
+                    double.Parse(textBox9.Text),
+                    int.Parse(textBox5.Text),
+                    int.Parse(textBox10.Text));
             }
             catch (Exception ex)
             {
                 qms = new Smo();
             }
-            qms.StartSimulation(5000);
+            qms.StartSimulation(50000);
             int n0 = qms.GetRejectedRequests();
             int n = qms.GetServicedRequests();
             double maxTime = qms.GetMaxTimeInStorageDevice();
@@ -163,7 +172,7 @@ namespace WindowsFormsApp2
             
             for (double i = muStart; i < muEnd; i += muDelta)
             {
-                Smo qms = new Smo() { MuPhaseOne = i, MuPhaseTwo = i };
+                Smo qms = new Smo() { MuPhaseOne = i, MuPhaseTwoOne = i };
                 qms.StartSimulation(simulationTime);
                 double p = (double)qms.GetRejectedRequests() / (double)(qms.GetServicedRequests() + qms.GetRejectedRequests()) * 100;
                 rejectedInPercent.Add(p);
@@ -235,6 +244,16 @@ namespace WindowsFormsApp2
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
         {
 
         }
